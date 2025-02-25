@@ -6,7 +6,7 @@ import axios from 'axios';
 // Importing `axios`, a popular HTTP client for making requests to the backend API.
 
 import PrinterList from './components/PrinterList';
-import EventList from './components/EventList';
+//import EventList from './components/EventList';
 import EventChart from './components/EventChart';
 // Importing custom components: PrinterList, EventList, and EventChart.
 // These components are likely used for displaying printers, events, and visualizing data, respectively.

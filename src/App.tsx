@@ -17,6 +17,7 @@ import { Printer } from './interfaces/printers'
 // Using interfaces ensures type safety and allows easier debugging by defining object structures explicitly.
 
 import './App.css';
+import EventList from './components/EventList';
 // Importing the CSS file for the `App` component to apply custom styling.
 
 const API_BASE_URL = 'https://e5t06ry51j.execute-api.eu-north-1.amazonaws.com/dev/';
@@ -33,7 +34,7 @@ const App: React.FC = () => {
   const [selectedPrinterId, setSelectedPrinterId] = useState<string | null>(null);
 // This state variable holds the currently selected printer's ID. It can be a string or `null` if no printer is selected.
 
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events,setEvents] = useState<Event[]>([]);
 // Another state variable to store a list of `Event` objects. This will hold the events for the selected printer.
 
   const [loading, setLoading] = useState(false);
@@ -143,11 +144,17 @@ const App: React.FC = () => {
         thresholds={selectedPrinter.Thresholds 
             ? { lower: selectedPrinter.Thresholds.Lower, upper: selectedPrinter.Thresholds.Upper } 
             : { lower: 0, upper: 0 }}
+            
     />
       {/* Render the `EventChart` component, passing the selected printer's event count, out-of-bounds count, and thresholds as props.
-          The thresholds and out-of-bounds count default to `{ lower: 0, upper: 0 }` and `0` respectively, in case the data is missing. */}
+          The thresholds and out-of-bounds count default  to `{ lower: 0, upper: 0 }` and `0` respectively, in case the data is missing. */}
     </>
+   
+    
   )}
+   {events.map((event, index) => (
+      <li key={index}>{EventList.name}</li> // Replace 'event.name' with the actual property you want to display
+    ))}
 </div>
   );
 };
